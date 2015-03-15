@@ -1,4 +1,7 @@
-var currency = require('./currency.js');
+var Currency = require('./currency.js');
+var canadianDollar = 0.91;
+
+var currency = new Currency(canadianDollar);
 
 console.log("50 Canadian dollars equals this amount of US dollars: ");
 console.log(currency.canadianToUS(50));
