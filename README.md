@@ -56,3 +56,40 @@ http.createServer(function(req, res) {
 }).listen(3000);
 console.log('Server running at http://localhost:3000/');
 ```
+- The Node convention for asynchronous callbacks
+```javascript
+var fs = require('fs');
+fs.readFile('./file-name.json', function(err, data) {
+	if (err) throw err;
+	// do something with data
+});
+```
+
+- Custom Event Listener
+```javascript
+var EventEmitter = require('events').EventEmitter;
+var channel = new EventEmitter();
+channel.on('join', function() {
+	console.log("Welcome!");
+});
+
+// to emit event join
+channel.emit('join');
+// event names can be any string value: data, join, or some crazy long name
+```
+
+#### HTTP server
+- http module is used
+```javascript
+var http = require('http');
+```
+- To create an http server, call the http.createServer() function. Accepts a single argument, a callback function.
+- This request callback receives, as arguments, the request and response objects.(req, res)
+```javascript
+var http = require('http');
+var server = http.createServer(function(req, res) {
+	// handle request
+});
+```
+- it's your reponsibility to end the response using the res.end() method.
+- If you forget to end the reponse, the request will hang until the client times out or it will just remain open.
